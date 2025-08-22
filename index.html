@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ConectaENEM — Preparação gratuita para o ENEM, UM AUXILIO PARA ESTUDANTES COM DIFICULDADE DE ESTUDAR PARA O ENEM.</title>
+  <meta name="description" content="Conecta.ENEM — correção de redações, apoio à saúde mental, dicas de estudo e simulados." />
+  <style>
+    /* Reset minimal */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;line-height:1.4;background:linear-gradient(180deg,#f7fbff 0%, #ffffff 100%);color:#0f172a}
+
+    /* Container */
+    .container{max-width:1100px;margin:28px auto;padding:0 20px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px;box-shadow:0 6px 18px rgba(12,74,110,0.08)}
+    nav ul{display:flex;gap:16px;list-style:none}
+    nav a{color:#0f172a;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    nav a.cta{background:#06b6d4;color:#022c3a}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin:28px 0}
+    .hero h1{font-size:32px;margin-bottom:12px}
+    .hero p{color:#334155;margin-bottom:16px}
+    .btn-primary{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:700;background:linear-gradient(90deg,#7c3aed,#06b6d4);color:white;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(99,102,241,0.12)}
+    .btn-ghost{padding:10px 16px;border-radius:10px;background:transparent;border:1px solid rgba(15,23,42,0.06);cursor:pointer}
+
+    /* Card grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .card{background:white;border-radius:14px;padding:18px;box-shadow:0 8px 20px rgba(2,6,23,0.04);min-height:120px;display:flex;flex-direction:column;gap:10px}
+    .card .title{font-weight:700}
+    .card small{color:#475569}
+
+    /* Simbolo do governo panel */
+    .simbolo do governo{background:linear-gradient(180deg,#fff7ed,#fff);border-radius:14px;padding:14px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 8px 20px rgba(250,204,21,0.06)}
+    .avatar{width:160px;height:160px;border-radius:20px;background:url('https://images.unsplash.com/photo-1518791841217-8f162f1e1131?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=') center/cover;border:6px solid white}
+    .welcome{font-weight:700}
+
+    /* Sections */
+    section{margin:28px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      header{padding:10px 0}
+      .logo{width:48px;height:48px}
+      .avatar{width:120px;height:120px}
+    }
+
+    /* Footer */
+    footer{padding:24px 0;color:#475569;font-size:14px;text-align:center}
+
+    /* Simple modal for "Começar" */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:none;align-items:center;justify-content:center}
+    .modal{background:white;padding:18px;border-radius:12px;max-width:520px;width:92%}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">CE</div>
+        <div>
+          <div style="font-weight:800">ConectaENEM</div>
+          <small style="color:#64748b">Gratuito • Correção de redações • Apoio estudantil</small>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#redacoes">Redações</a></li>
+          <li><a href="#vocacional">Teste</a></li>
+          <li><a href="#saude">Saúde</a></li>
+          <li><a href="#dicas">Dicas</a></li>
+          <li><a class="cta" href="#" id="openStart">Começar</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h1>ConectaENEM — seu apoio gratuito para se preparar pro ENEM</h1>
+          <p>Correção de redações com feedback construtivo,teste vocacional e dicas de estudo — tudo num só lugar, feito por estudantes.</p>
+          <div style="display:flex;gap:12px;align-items:center">
+            <button class="btn-primary" id="startBtn">Começar</button>
+            <button class="btn-ghost" onclick="scrollToSection('#redacoes')">Ver redações corrigidas</button>
+          </div>
+
+          <div class="grid" style="margin-top:22px">
+            <div class="card">
+              <div class="title">Correção de Redações</div>
+              <small>Envie sua redação e receba feedback pontual: coesão, coerência, gramática e sugestões de melhoria.</small>
+            </div>
+            <div class="card">
+              <div class="title">Teste Vocacional</div>
+              <small>Descubra carreiras que combinam com você com um teste simples e explicações sobre cada área.</small>
+            </div>
+            <div class="card">
+              <div class="title">Simulados</div>
+              <small>Questões simuladas do ENEM para voce praticar.</small>
+            </div>
+          </div>
+        </div>
+
+        <aside class="Simbolo do governo">
+          <div class="avatar" aria-hidden="true"></div>
+          <div class="welcome">Olá, Estudantes! ✨</div>
+          <div style="text-align:center;color:#334155">Aqui estão atalhos rápidos para começar: <br><small>Redações • Teste • Dicas</small></div>
+        </aside>
+      </section>
+
+      <section id="redacoes">
+        <div class="section-head">
+          <h2>Redações corrigidas</h2>
+          <a href="#" class="btn-ghost">Enviar redação</a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+          <article class="card">
+            <div style="font-weight:700">Redação: O papel da escola na formação cidadã</div>
+            <small>Feedback: boa estrutura, trabalhe melhor a conclusão e exemplos locais.</small>
+          </article>
+          <article class="card">
+            <div style="font-weight:700">Redação: Desafios do ensino remoto</div>
+            <small>Feedback: ótima argumentação, revisar pontuação e transições entre parágrafos.</small>
+          </article>
+        </div>
+      </section>
+
+      <section id="vocacional">
+        <div class="section-head">
+          <h2>Teste Vocacional</h2>
+          <a href="#" class="btn-ghost">Fazer teste</a>
+        </div>
+        <p style="color:#475569">Um teste rápido (10 perguntas) que sugere áreas de estudo e profissões com base nas suas respostas (obs: não define qual sera de fato a profissõ que voce ira seguir!).</p>
+      </section>
+
+      <section id="saude">
+        <div class="section-head">
+          <h2>Saúde Mental</h2>
+          <a href="#" class="btn-ghost">Recursos</a>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div class="card" style="flex:1;min-width:240px">
+            <div style="font-weight:700">Técnicas de Respiração</div>
+            <small>Exercícios curtos para reduzir ansiedade antes da prova.</small>
+          </div>
+          <div class="card" style="flex:1;min-width:240px">
+            <div style="font-weight:700">Organização Emocional</div>
+            <small>Como montar rotinas de estudo que respeitem seu ritmo.</small>
+          </div>
+        </div>
+      </section>
+
+      <section id="dicas">
+        <div class="section-head">
+          <h2>Dicas de Estudo</h2>
+          <a href="#" class="btn-ghost">Ver todas</a>
+        </div>
+        <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+          <div class="card"><div class="title">Foco Pomodoro</div><small>25 min de estudo / 5 min de pausa.</small></div>
+          <div class="card"><div class="title">Mapas Mentais</div><small>Resumo visual para revisar tópicos rapidamente.</small></div>
+          <div class="card"><div class="title">Simulados</div><small>Pratique com provas antigas do ENEM.</small></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div style="max-width:900px;margin:0 auto">© ConectaENEM — Projeto educacional gratuito • Desenvolvido por estudantes</div>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modal">
+    <div class="modal">
+      <h3>Vamos começar?</h3>
+      <p>Escolha um dos serviços: correção de redação, teste vocacional ou dicas de estudo.</p>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <button class="btn-primary" onclick="openSection('#redacoes')">Redações</button>
+        <button class="btn-primary" onclick="openSection('#vocacional')">Teste</button>
+        <button class="btn-primary" onclick="openSection('#dicas')">Dicas</button>
+        <button class="btn-ghost" onclick="closeModal()">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    document.getElementById('openStart').addEventListener('click',function(e){e.preventDefault();openModal()});
+    document.getElementById('startBtn').addEventListener('click',openModal);
+    function openModal(){modal.style.display='flex'}
+    function closeModal(){modal.style.display='none'}
+    function openSection(sel){closeModal();scrollToSection(sel)}
+    function scrollToSection(sel){const el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+
+    // Pequena demonstração: substitua com integração real (ex: backend, firebase)
+    // Ex: enviar redação -> fetch('/api/redacao',{method:'POST', body:...})
+  </script>
+</body>
+</html>
+
